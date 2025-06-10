@@ -97,10 +97,11 @@ def test_exercise_7():
         assert isinstance(item, str), f"Item {i} should be a string, got {type(item)}"
         assert len(item) > 0, f"String {i} should not be empty"
     
-    # Third string should contain both single and double quotes
+    # Third string should demonstrate mixed quote usage (contain single quotes in content)
+    # Example: "She said 'Hello!' to me" uses double quotes to wrap content with single quotes
     mixed_quotes_string = result[2]
-    assert "'" in mixed_quotes_string and '"' in mixed_quotes_string, \
-        "Third string should contain both single and double quotes"
+    assert "'" in mixed_quotes_string, \
+        "Third string should contain single quotes to demonstrate mixed quote usage"
 
 def test_exercise_8():
     """Test that exercise_8 returns a helpful comment"""
