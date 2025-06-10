@@ -2,238 +2,138 @@
 Day 1 Tests: Environment Setup and Hello World
 ==============================================
 
-This file contains automated tests to verify Day 1 exercise completion.
+Tests for Day 1 exercise functions.
 Run these tests with: python -m pytest tests/test_day1.py -v
-
-Note: These tests check for basic functionality and common patterns.
-There may be multiple correct solutions that these tests don't cover.
 """
 
 import pytest
 import sys
 import os
-from io import StringIO
-from contextlib import redirect_stdout
 
 # Add the project root to the path so we can import exercises
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-def capture_print_output(func):
-    """Helper function to capture print output from a function"""
-    f = StringIO()
-    with redirect_stdout(f):
-        func()
-    return f.getvalue()
+# Import the exercise functions
+try:
+    from exercises.day1_exercises import (
+        exercise_1, exercise_2, exercise_3, exercise_4,
+        exercise_5, exercise_6, exercise_7, exercise_8
+    )
+except ImportError as e:
+    pytest.fail(f"Could not import exercise functions: {e}")
 
-def test_python_environment():
-    """Test that Python environment is set up correctly"""
-    # Test that we can run Python and basic operations work
-    assert sys.version_info >= (3, 6), "Python 3.6 or higher required"
-    
-    # Test basic print functionality
-    f = StringIO()
-    with redirect_stdout(f):
-        print("Hello, World!")
-    output = f.getvalue()
-    assert "Hello, World!" in output
+def test_exercise_1():
+    """Test that exercise_1 returns 'Hello, Python!'"""
+    result = exercise_1()
+    assert result == "Hello, Python!", f"Expected 'Hello, Python!', got {repr(result)}"
 
-def test_hello_world_file_exists():
-    """Test that students have created basic Python files"""
-    # Check if common beginner files exist
-    expected_files = ['hello_world.py', 'print_practice.py']
+def test_exercise_2():
+    """Test that exercise_2 returns a list with name, age, and hobby"""
+    result = exercise_2()
+    assert isinstance(result, list), f"Expected a list, got {type(result)}"
+    assert len(result) == 3, f"Expected list of length 3, got {len(result)}"
     
-    # Look in common locations
-    search_paths = [
-        '.',
-        '../',
-        'exercises/',
-        '../exercises/',
-    ]
+    # All items should be strings
+    for i, item in enumerate(result):
+        assert isinstance(item, str), f"Item {i} should be a string, got {type(item)}"
     
-    found_files = []
-    for path in search_paths:
-        for file in expected_files:
-            full_path = os.path.join(path, file)
-            if os.path.exists(full_path):
-                found_files.append(file)
-    
-    # We should find at least one practice file
-    assert len(found_files) > 0, "No practice Python files found. Create hello_world.py or print_practice.py"
+    # Basic validation - name and hobby should be non-empty
+    assert len(result[0]) > 0, "Name (first item) should not be empty"
+    assert len(result[2]) > 0, "Hobby (third item) should not be empty"
 
-def test_basic_print_functionality():
-    """Test that students understand basic print statements"""
+def test_exercise_3():
+    """Test that exercise_3 returns a tuple with number and sentence"""
+    result = exercise_3()
+    assert isinstance(result, tuple), f"Expected a tuple, got {type(result)}"
+    assert len(result) == 2, f"Expected tuple of length 2, got {len(result)}"
     
-    def test_print():
-        print("Hello, Python!")
-        print(42)
-        print("My age is", 25)
-    
-    output = capture_print_output(test_print)
-    lines = output.strip().split('\n')
-    
-    # Should have 3 lines of output
-    assert len(lines) == 3, f"Expected 3 lines of output, got {len(lines)}"
-    
-    # Check specific content
-    assert "Hello, Python!" in lines[0]
-    assert "42" in lines[1]
-    assert "My age is 25" in lines[2]
+    number, sentence = result
+    assert isinstance(number, int), f"First item should be an integer, got {type(number)}"
+    assert isinstance(sentence, str), f"Second item should be a string, got {type(sentence)}"
+    assert str(number) in sentence, f"The sentence should contain the number {number}"
 
-def test_string_and_number_printing():
-    """Test understanding of strings vs numbers in print statements"""
+def test_exercise_4():
+    """Test that exercise_4 returns a sentence with text and numbers"""
+    result = exercise_4()
+    assert isinstance(result, str), f"Expected a string, got {type(result)}"
+    assert len(result) > 0, "Result should not be empty"
     
-    # Test that students understand quotes vs no quotes
-    def test_mixed_printing():
-        print("Text with quotes")
-        print(123)
-        print("Number as text:", "456")
-        print("Number as number:", 789)
-    
-    output = capture_print_output(test_mixed_printing)
-    lines = output.strip().split('\n')
-    
-    assert len(lines) == 4
-    assert "Text with quotes" in lines[0]
-    assert "123" in lines[1]
-    assert "456" in lines[2]
-    assert "789" in lines[3]
+    # Should contain at least one digit
+    assert any(char.isdigit() for char in result), "Sentence should contain at least one number"
 
-def test_comments():
-    """Test that students can use comments"""
+def test_exercise_5():
+    """Test that exercise_5 returns ASCII art with at least 3 lines"""
+    result = exercise_5()
+    assert isinstance(result, str), f"Expected a string, got {type(result)}"
     
-    def test_with_comments():
-        # This is a comment
-        print("This line should print")
-        # print("This line should not print")
+    lines = result.split('\n')
+    assert len(lines) >= 3, f"ASCII art should have at least 3 lines, got {len(lines)}"
     
-    output = capture_print_output(test_with_comments)
-    lines = output.strip().split('\n')
-    
-    # Should only have one line of actual output
-    assert len(lines) == 1
-    assert "This line should print" in lines[0]
-    assert "This line should not print" not in output
-
-def test_multiple_items_in_print():
-    """Test printing multiple items in one statement"""
-    
-    def test_multiple():
-        print("Hello", "World", 123, "Python")
-    
-    output = capture_print_output(test_multiple)
-    
-    # All items should appear in the output
-    assert "Hello" in output
-    assert "World" in output
-    assert "123" in output
-    assert "Python" in output
-
-def test_quote_variations():
-    """Test using both single and double quotes"""
-    
-    def test_quotes():
-        print("Double quotes work")
-        print('Single quotes work')
-        print("She said, 'Hello!'")
-    
-    output = capture_print_output(test_quotes)
-    lines = output.strip().split('\n')
-    
-    assert len(lines) == 3
-    assert "Double quotes work" in lines[0]
-    assert "Single quotes work" in lines[1]
-    assert "Hello!" in lines[2]
-
-class TestDay1Exercises:
-    """Test class for Day 1 specific exercises"""
-    
-    def test_exercise_file_exists(self):
-        """Test that the day1_exercises.py file exists"""
-        exercise_file = 'exercises/day1_exercises.py'
-        assert os.path.exists(exercise_file), f"Exercise file {exercise_file} not found"
-    
-    def test_exercise_file_runnable(self):
-        """Test that the exercise file can be imported without errors"""
-        try:
-            # Try to run the exercises file
-            import exercises.day1_exercises
-        except ImportError:
-            pytest.skip("exercises.day1_exercises module not found")
-        except SyntaxError as e:
-            pytest.fail(f"Syntax error in exercises file: {e}")
-        except Exception as e:
-            # Other errors are okay - students might have incomplete solutions
-            pass
-
-def test_ascii_art_attempt():
-    """Test that students have attempted ASCII art"""
-    
-    def test_ascii():
-        print("  *  ")
-        print(" *** ")
-        print("*****")
-    
-    output = capture_print_output(test_ascii)
-    lines = output.strip().split('\n')
-    
-    # Should have multiple lines
-    assert len(lines) >= 3, "ASCII art should have multiple lines"
-    
-    # Should contain some visual characters
+    # Should have some visual characters
     visual_chars = ['*', '/', '\\', '|', '-', '_', '^', 'o', '(', ')']
-    has_visual = any(char in output for char in visual_chars)
+    has_visual = any(char in result for char in visual_chars)
     assert has_visual, "ASCII art should contain visual characters"
 
-def test_story_telling():
-    """Test that students can create multi-line narratives"""
+def test_exercise_6():
+    """Test that exercise_6 returns a 4-line story"""
+    result = exercise_6()
+    assert isinstance(result, str), f"Expected a string, got {type(result)}"
     
-    def test_story():
-        print("Once upon a time there was a programmer.")
-        print("They wanted to learn Python.")
-        print("They practiced every day.")
-        print("And they became very skilled!")
+    lines = result.split('\n')
+    assert len(lines) == 4, f"Story should have exactly 4 lines, got {len(lines)}"
     
-    output = capture_print_output(test_story)
-    lines = output.strip().split('\n')
-    
-    # Should have multiple lines for a story
-    assert len(lines) >= 3, "Story should have multiple lines"
-    
-    # Lines should have reasonable content (not just single words)
-    for line in lines:
-        assert len(line.strip()) > 5, f"Story line too short: {line}"
+    # Each line should have reasonable content
+    for i, line in enumerate(lines):
+        assert len(line.strip()) > 0, f"Line {i+1} should not be empty"
 
-@pytest.mark.parametrize("test_case", [
-    ("print('Hello')", "Hello"),
-    ("print(42)", "42"),
-    ("print('Age:', 25)", "Age: 25"),
-])
-def test_specific_print_cases(test_case):
-    """Test specific print statement patterns"""
-    code, expected = test_case
+def test_exercise_7():
+    """Test that exercise_7 returns a list of strings with different quote usage"""
+    result = exercise_7()
+    assert isinstance(result, list), f"Expected a list, got {type(result)}"
+    assert len(result) == 3, f"Expected list of length 3, got {len(result)}"
     
-    # Execute the code and capture output
-    f = StringIO()
-    with redirect_stdout(f):
-        exec(code)
-    output = f.getvalue().strip()
+    # All items should be strings
+    for i, item in enumerate(result):
+        assert isinstance(item, str), f"Item {i} should be a string, got {type(item)}"
+        assert len(item) > 0, f"String {i} should not be empty"
     
-    assert expected in output, f"Expected '{expected}' in output, got '{output}'"
+    # Third string should contain both single and double quotes
+    mixed_quotes_string = result[2]
+    assert "'" in mixed_quotes_string and '"' in mixed_quotes_string, \
+        "Third string should contain both single and double quotes"
 
-def test_error_awareness():
-    """Test that students are aware of common errors"""
+def test_exercise_8():
+    """Test that exercise_8 returns a helpful comment"""
+    result = exercise_8()
+    assert isinstance(result, str), f"Expected a string, got {type(result)}"
+    assert len(result) > 10, "Comment should be descriptive (more than 10 characters)"
     
-    # These should raise errors (good for learning)
-    error_cases = [
-        "print(Hello World)",  # Missing quotes
-        "Print('Hello')",      # Wrong capitalization
-        "print('Hello World'", # Missing closing quote
-    ]
+    # Should be a reasonable comment about printing
+    result_lower = result.lower()
+    print_related = any(word in result_lower for word in ['print', 'display', 'output', 'show', 'console'])
+    assert print_related, "Comment should be related to printing/displaying output"
+
+def test_all_functions_implemented():
+    """Test that all functions are implemented (don't just return None)"""
+    functions = [exercise_1, exercise_2, exercise_3, exercise_4, 
+                exercise_5, exercise_6, exercise_7, exercise_8]
     
-    for case in error_cases:
-        with pytest.raises((SyntaxError, NameError)):
-            exec(case)
+    for i, func in enumerate(functions, 1):
+        result = func()
+        assert result is not None, f"Exercise {i} is not implemented (returns None)"
+
+def test_no_syntax_errors():
+    """Test that all exercise functions can be called without syntax errors"""
+    functions = [exercise_1, exercise_2, exercise_3, exercise_4, 
+                exercise_5, exercise_6, exercise_7, exercise_8]
+    
+    for i, func in enumerate(functions, 1):
+        try:
+            func()
+        except Exception as e:
+            # Allow NotImplementedError or functions that return None
+            if not isinstance(e, NotImplementedError):
+                pytest.fail(f"Exercise {i} has an error: {e}")
 
 if __name__ == "__main__":
-    # Run tests when file is executed directly
     pytest.main([__file__, "-v"])

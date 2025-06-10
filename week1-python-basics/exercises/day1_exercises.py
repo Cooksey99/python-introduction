@@ -2,160 +2,137 @@
 Day 1 Exercises: Environment Setup and Hello World
 ==================================================
 
+Complete each function by writing the required code.
+Each function should return the expected value as specified.
+
 Instructions:
-1. Complete each exercise by writing the required code
+1. Complete each exercise function below
 2. Run this file to test your solutions: python day1_exercises.py
-3. Check your work with the automated tests: python -m pytest tests/test_day1.py -v
+3. Check your work with automated tests: python -m pytest tests/test_day1.py -v
 
 Tips:
-- Read each exercise carefully
-- Test your code frequently by running the file
+- Read the function docstring to understand what's expected
+- The function should return the specified value
+- Use print() if you want to see output, but return the required value
 - Don't worry about making mistakes - they're part of learning!
-- Use comments (#) to add your own notes
 """
 
-print("=== Day 1 Exercises: Hello World and Print Statements ===")
-print()
+def exercise_1():
+    """
+    Return the string "Hello, Python!"
+    
+    Returns:
+        str: The exact string "Hello, Python!"
+    """
+    # Your code here:
+    pass
 
-# Exercise 1: Basic Print Statement
-# TODO: Print "Hello, Python!" to the console
-print("Exercise 1:")
-# Your code here:
+def exercise_2():
+    """
+    Return a list containing your name, age, and favorite hobby as strings.
+    
+    Returns:
+        list: [name, age_as_string, hobby]
+        Example: ["Alice", "25", "Reading"]
+    """
+    # Your code here:
+    pass
 
+def exercise_3():
+    """
+    Return your favorite number (as an integer) and a sentence about it.
+    
+    Returns:
+        tuple: (favorite_number, sentence_with_number)
+        Example: (42, "My favorite number is 42")
+    """
+    # Your code here:
+    pass
 
-print()
+def exercise_4():
+    """
+    Return a sentence that combines text and numbers.
+    
+    Returns:
+        str: A sentence like "I have 2 cats and 1 dog"
+    """
+    # Your code here:
+    pass
 
-# Exercise 2: Personal Introduction
-# TODO: Print your name, age, and favorite hobby on separate lines
-print("Exercise 2:")
-# Your code here:
+def exercise_5():
+    """
+    Return a multi-line string containing ASCII art (at least 3 lines).
+    
+    Returns:
+        str: ASCII art as a multi-line string
+        Example: "  *  \n *** \n*****"
+    """
+    # Your code here:
+    pass
 
+def exercise_6():
+    """
+    Return a 4-line story as a single string with newlines.
+    
+    Returns:
+        str: A story with exactly 4 lines separated by \n
+        Example: "Line 1\nLine 2\nLine 3\nLine 4"
+    """
+    # Your code here:
+    pass
 
+def exercise_7():
+    """
+    Return a list of three strings demonstrating different quote usage:
+    - One string using single quotes
+    - One string using double quotes  
+    - One string containing both single and double quotes
+    
+    Returns:
+        list: [single_quote_string, double_quote_string, mixed_quote_string]
+        Example: ['Hello world', "Python is great", "She said 'Hello!' to me"]
+    """
+    # Your code here:
+    pass
 
+def exercise_8():
+    """
+    Return a string that would be a good comment for a print statement.
+    
+    Returns:
+        str: A helpful comment explaining what a print statement does
+        Example: "This prints a message to the console"
+    """
+    # Your code here:
+    pass
 
-print()
-
-# Exercise 3: Print with Numbers
-# TODO: Print your favorite number without quotes
-# TODO: Then print a sentence that includes that number
-print("Exercise 3:")
-# Your code here:
-
-
-
-print()
-
-# Exercise 4: Mixed Content
-# TODO: Print a sentence that combines text and numbers
-# Example: "I have 2 cats and 1 dog"
-print("Exercise 4:")
-# Your code here:
-
-
-print()
-
-# Exercise 5: ASCII Art
-# TODO: Create a simple ASCII art design using print statements
-# You can make a smiley face, a tree, a house, or anything you like!
-print("Exercise 5:")
-# Your code here:
-
-
-
-
-
-
-print()
-
-# Exercise 6: Story Time
-# TODO: Write a 4-line story using print statements
-print("Exercise 6:")
-# Your code here:
-
-
-
-
-
-print()
-
-# Exercise 7: Quote Practice
-# TODO: Print a sentence using single quotes
-# TODO: Print a sentence using double quotes
-# TODO: Print a sentence that contains both single and double quotes
-print("Exercise 7:")
-# Your code here:
-
-
-
-
-print()
-
-# Exercise 8: Comments and Code
-# TODO: Write a print statement with a comment explaining what it does
-print("Exercise 8:")
-# Your code here:
-
-
-print()
-
-# Exercise 9: Multiple Items
-# TODO: Use print() to display multiple items separated by commas
-# Example: print("My name is", "Alex", "and I am", 25, "years old")
-print("Exercise 9:")
-# Your code here:
-
-
-print()
-
-# Exercise 10: Creative Challenge
-# TODO: Create a "business card" for yourself using print statements
-# Include: Name, Title (like "Python Student"), Email, and a fun fact
-print("Exercise 10:")
-# Your code here:
-
-
-
-
-
-
-print()
-
-# Bonus Challenge: Error Fixing
-# TODO: The following lines have errors. Fix them by uncommenting and correcting:
-
-print("Bonus Challenge:")
-# print(Hello World)  # Fix this line
-# Print("Fix the capitalization")  # Fix this line
-# print("Missing closing quote)  # Fix this line
-# print("Extra closing quote"))  # Fix this line
-
-
-print()
-print("=== Exercises Complete! ===")
-print("Run the tests to check your work: python -m pytest tests/test_day1.py -v")
-
-"""
-Self-Check Questions:
-====================
-After completing the exercises, ask yourself:
-
-1. Can I write a basic print statement without looking at examples?
-2. Do I understand the difference between printing text and numbers?
-3. Can I combine text and numbers in a single print statement?
-4. Do I know how to use both single and double quotes?
-5. Can I create and run a Python file successfully?
-
-If you answered "yes" to all questions, you're ready for Day 2!
-If not, review the concepts and practice more before moving on.
-
-Common Mistakes to Watch For:
-============================
-- Forgetting quotes around text
-- Using Print instead of print (capitalization matters)
-- Forgetting to save the file before running
-- Missing parentheses in print()
-- Unmatched quotes (opening quote without closing quote)
-
-Remember: Making mistakes is part of learning! Read error messages 
-carefully - they often tell you exactly what's wrong.
-"""
+# Test runner - you can run this file to see your results
+if __name__ == "__main__":
+    print("=== Day 1 Exercises: Hello World and Print Statements ===")
+    print()
+    
+    exercises = [
+        ("Exercise 1", exercise_1, "Should return 'Hello, Python!'"),
+        ("Exercise 2", exercise_2, "Should return [name, age, hobby] as strings"),
+        ("Exercise 3", exercise_3, "Should return (number, sentence)"),
+        ("Exercise 4", exercise_4, "Should return sentence with text and numbers"),
+        ("Exercise 5", exercise_5, "Should return ASCII art (3+ lines)"),
+        ("Exercise 6", exercise_6, "Should return 4-line story"),
+        ("Exercise 7", exercise_7, "Should return 3 strings with different quotes"),
+        ("Exercise 8", exercise_8, "Should return a helpful comment"),
+    ]
+    
+    for name, func, description in exercises:
+        print(f"{name}: {description}")
+        try:
+            result = func()
+            if result is not None:
+                print(f"  ✓ Result: {repr(result)}")
+            else:
+                print(f"  ✗ Not implemented (returns None)")
+        except Exception as e:
+            print(f"  ✗ Error: {e}")
+        print()
+    
+    print("=== Run the tests to check your work ===")
+    print("python -m pytest tests/test_day1.py -v")

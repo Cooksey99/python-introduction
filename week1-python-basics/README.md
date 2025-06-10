@@ -113,7 +113,17 @@ Choose one of these beginner-friendly editors:
    - **IDLE**: Press F5
    - **Terminal**: `python hello_test.py`
 
-If you see both messages printed, you're ready to start!
+4. Install pytest for automated testing:
+   ```bash
+   python -m pip install pytest
+   ```
+
+5. Verify pytest works:
+   ```bash
+   python -m pytest --version
+   ```
+
+If you see both messages printed and pytest shows a version number, you're ready to start!
 
 ## 📚 How to Use This Course
 
