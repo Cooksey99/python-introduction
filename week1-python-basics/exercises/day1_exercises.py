@@ -25,7 +25,6 @@ def exercise_1():
         str: The exact string "Hello, Python!"
     """
     # Your code here:
-    print("\n\n\n\n\n\n\n\nLKJSDLFKJLKSJDF\n\n\n\n\n\n\n\n")
     return "Hello, Python!"
 
 def exercise_2():
@@ -37,7 +36,8 @@ def exercise_2():
         Example: ["Alice", "25", "Reading"]
     """
     # Your code here:
-    pass
+    arr = ["Alice", "25", "Reading"]
+    return arr
 
 def exercise_3():
     """
@@ -48,7 +48,9 @@ def exercise_3():
         Example: (42, "My favorite number is 42")
     """
     # Your code here:
-    pass
+    
+    tup = (42, "My favorite number is 42")
+    return tup
 
 def exercise_4():
     """
@@ -58,7 +60,7 @@ def exercise_4():
         str: A sentence like "I have 2 cats and 1 dog"
     """
     # Your code here:
-    pass
+    return "I have 2 cats and 1 dog"
 
 def exercise_5():
     """
@@ -69,7 +71,7 @@ def exercise_5():
         Example: "  *  \n *** \n*****"
     """
     # Your code here:
-    pass
+    return "  *  \n *** \n*****"
 
 def exercise_6():
     """
@@ -80,7 +82,7 @@ def exercise_6():
         Example: "Line 1\nLine 2\nLine 3\nLine 4"
     """
     # Your code here:
-    pass
+    return "Line 1\nLine 2\nLine 3\nLine 4"
 
 def exercise_7():
     """
@@ -94,7 +96,8 @@ def exercise_7():
         Example: ['Hello world', "Python is great", "She said 'Hello!' to me"]
     """
     # Your code here:
-    pass
+    return ['Hello world', "Python is great", "She said 'Hello!' to me"]
+
 
 def exercise_8():
     """
@@ -105,7 +108,7 @@ def exercise_8():
         Example: "This prints a message to the console"
     """
     # Your code here:
-    pass
+    return "This prints a message to the console"
 
 # Test runner - you can run this file to see your results
 if __name__ == "__main__":
