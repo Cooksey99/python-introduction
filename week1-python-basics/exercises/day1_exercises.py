@@ -25,7 +25,8 @@ def exercise_1():
         str: The exact string "Hello, Python!"
     """
     # Your code here:
-    pass
+    print("\n\n\n\n\n\n\n\nLKJSDLFKJLKSJDF\n\n\n\n\n\n\n\n")
+    return "Hello, Python!"
 
 def exercise_2():
     """
